@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  
+  fail2ban:
+    build:
+      context: ./Dockerfiles/fail2ban
+    volumes:
+      - "./data/fail2ban:/data"
+      - "/var/log:/var/log:ro"
+    container_name: fail2ban
+    #environment:
+    restart: unless-stopped
+    network_mode: "host"
